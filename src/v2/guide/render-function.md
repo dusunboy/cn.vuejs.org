@@ -253,7 +253,7 @@ Vue.component('anchored-heading', {
     var headingId = getChildrenTextContent(this.$slots.default)
       .toLowerCase()
       .replace(/\W+/g, '-')
-      .replace(/(^\-|\-$)/g, '')
+      .replace(/(^-|-$)/g, '')
 
     return createElement(
       'h' + this.level,
@@ -316,6 +316,7 @@ render: function (createElement) {
 </ul>
 <p v-else>No items found.</p>
 ```
+
 这些都会在 render 函数中被 JavaScript 的 `if`/`else` 和 `map` 重写：
 
 ``` js
@@ -474,7 +475,7 @@ createElement(
 </anchored-heading>
 ```
 
-这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/babel-plugin-transform-vue-jsx)，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
+这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/jsx)，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
 
 ``` js
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -490,9 +491,10 @@ new Vue({
   }
 })
 ```
-<p class="tip">将 `h` 作为 `createElement` 的别名是 Vue 生态系统中的一个通用惯例，实际上也是 JSX 所要求的，如果在作用域中 `h` 失去作用，在应用中会触发报错。</p>
 
-更多关于 JSX 映射到 JavaScript，阅读 [使用文档](https://github.com/vuejs/babel-plugin-transform-vue-jsx#usage)。
+<p class="tip">将 `h` 作为 `createElement` 的别名是 Vue 生态系统中的一个通用惯例，实际上也是 JSX 所要求的。从 Vue 的 Babel 插件的 [3.4.0 版本](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection)开始，我们会在以 ES2015 语法声明的含有 JSX 的任何方法和 getter 中 (不是函数或箭头函数中) 自动注入 `const h = this.$createElement`，这样你就可以去掉 `(h)` 参数了。对于更早版本的插件，如果 `h` 在当前作用域中不可用，应用会抛错。</p>
+
+更多关于 JSX 映射到 JavaScript，阅读 [使用文档](https://github.com/vuejs/jsx#installation)。
 
 ## 函数式组件
 
@@ -529,6 +531,7 @@ Vue.component('my-component', {
 - `props`：提供所有 prop 的对象
 - `children`: VNode 子节点的数组
 - `slots`: 返回所有插槽的对象的函数
+- `scopedSlots`: (2.6.0+) 一个暴露传入的作用域插槽以及函数形式的普通插槽的对象。
 - `data`：传递给组件的[数据对象](#深入-data-对象)，作为 `createElement` 的第二个参数传入组件 
 - `parent`：对父组件的引用
 - `listeners`: (2.3.0+) 一个包含了所有在父组件上注册的事件侦听器的对象。这只是一个指向 `data.on` 的别名。

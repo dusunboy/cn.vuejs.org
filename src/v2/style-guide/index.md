@@ -188,7 +188,7 @@ new Vue({
 </summary>
 {% endraw %}
 
-细致的 [prop 定义](../guide/components.html#Prop-验证)有两个好处：
+细致的 [prop 定义](../guide/components-props.html#Prop-验证)有两个好处：
 
 - 它们写明了组件的 API，所以很容易看懂组件的用法；
 - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -1214,9 +1214,9 @@ props: {
 }
 ```
 
-``` html
+{% codeblock lang:html %}
 <WelcomeMessage greetingText="hi"/>
-```
+{% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
 {% raw %}<div class="style-example example-good">{% endraw %}
@@ -1228,9 +1228,9 @@ props: {
 }
 ```
 
-``` html
+{% codeblock lang:html %}
 <WelcomeMessage greeting-text="hi"/>
-```
+{% endcodeblock %}
 {% raw %}</div>{% endraw %}
 
 
@@ -1704,7 +1704,7 @@ computed: {
 
 **如果一组 `v-if` + `v-else` 的元素类型相同，最好使用 `key` (比如两个 `<div>` 元素)。**
 
-默认情况下，Vue 会尽可能高效的更新 DOM。这意味着其在相同类型的元素之间切换时，会修补已存在的元素，而不是将旧的元素移除然后在同一位置添加一个新元素。如果本不相同的元素被识别为相同，则会出现[意料之外的副作用](https://jsfiddle.net/chrisvfritz/bh8fLeds/)。
+默认情况下，Vue 会尽可能高效的更新 DOM。这意味着其在相同类型的元素之间切换时，会修补已存在的元素，而不是将旧的元素移除然后在同一位置添加一个新元素。如果本不相同的元素被识别为相同，则会出现[意料之外的结果](https://jsfiddle.net/chrisvfritz/bh8fLeds/)。
 
 {% raw %}<div class="style-example example-bad">{% endraw %}
 #### 反例

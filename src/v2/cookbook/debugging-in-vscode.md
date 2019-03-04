@@ -61,7 +61,7 @@ module.exports = {
       "webRoot": "${workspaceFolder}/src",
       "breakOnLoad": true,
       "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*"
+        "webpack:///./src/*": "${webRoot}/*"
       }
     },
     {
@@ -103,16 +103,6 @@ module.exports = {
 ![Devtools Timetravel Debugger](/images/devtools-timetravel.gif)
 
 <p class="tip">请留意如果页面使用了一个生产环境/压缩后的 Vue.js 构建版本 (例如来自一个 CDN 的标准的链接)，devtools 的审查功能是默认被禁用的，所以 Vue 面板不会出现。如果你切换到一个非压缩版本，你可能需要强制刷新该页面来看到它。</p>
-
-### Vuetron
-
-[Vuetron](http://vuetron.io/) 是一个非常好的项目，它对 vue-devtools 的工作做了一些扩展。除了普通的 devtools 工作流程，你还可以：
-
-* 快速查阅 API 请求/响应：如果你使用 fetch API 来发送请求，那么这个功能会将所有发出的请求都展示出来。这个扩展出来的卡片展示了请求的数据和响应的数据。
-* 订阅你的应用的某个具体部分的状态，以便快速调试
-* 组件依赖可视化，且允许你收起/展开某个具体的依赖树视图
-
-![Vuetron 层级结构](/images/vuetron-hierarchy.gif)
 
 ### 简单的 debugger 语句
 
